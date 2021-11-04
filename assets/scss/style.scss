@@ -1,6 +1,6 @@
 $bg-dark: #292a41;
 $text-dark: #ececec;
-$shadow-dark: #acacac;
+$shadow-dark: #bec925;
 $card-dark: #292a41;
 
 * {
@@ -11,7 +11,7 @@ $card-dark: #292a41;
 
 body {
   @import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
   background-color: #292a41;
   color: $text-dark;
   font-family: "Fruktur", cursive;
@@ -31,14 +31,31 @@ $card-padding: 1.5em;
 $card-width: 350px;
 .card {
   background-color: $card-dark;
+  border-radius: 1em;
   box-shadow: 0px 10px 13px -7px $shadow-dark, 5px 0 5px $bg-dark;
+  font-family: "Bebas Neue", cursive;
   padding: $card-padding;
   margin: 1em;
   max-width: 350px;
+  transition: all 200ms ease-in-out;
+  &:hover {
+    box-shadow: 0px 10px 20px -7px $shadow-dark, 5px 0 15px $bg-dark;
+    transform: scale(1.05);
+  }
 }
 
 .card-title {
   padding: 0.25em;
+  font-size: 2em;
+}
+@keyframes appear {
+  0% {
+    background: #bec925;
+  }
+
+  100% {
+    background: #bec925;
+  }
 }
 
 .card-progress {
@@ -50,9 +67,32 @@ $card-width: 350px;
     min-height: 5px;
     min-width: 37px;
   }
-  .card-active {
-    background: #bec925;
-  }
+}
+.card-active {
+  animation-duration: 200ms;
+  animation-name: appear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  //background: #bec925 !important;
+}
+
+.card-bar-one {
+  animation-delay: 200ms;
+}
+.card-bar-two {
+  animation-delay: 400ms;
+}
+.card-bar-three {
+  animation-delay: 600ms;
+}
+.card-bar-four {
+  animation-delay: 800ms;
+}
+.card-bar-five {
+  animation-delay: 1000ms;
+}
+.card-bar-six {
+  animation-delay: 1200ms;
 }
 
 $card-bottom-color: #161724;

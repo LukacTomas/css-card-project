@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -24,15 +24,45 @@ h1 {
 
 .card {
   background-color: #292a41;
-  -webkit-box-shadow: 0px 10px 13px -7px #acacac, 5px 0 5px #292a41;
-          box-shadow: 0px 10px 13px -7px #acacac, 5px 0 5px #292a41;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 10px 13px -7px #bec925, 5px 0 5px #292a41;
+          box-shadow: 0px 10px 13px -7px #bec925, 5px 0 5px #292a41;
+  font-family: "Bebas Neue", cursive;
   padding: 1.5em;
   margin: 1em;
   max-width: 350px;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0px 10px 20px -7px #bec925, 5px 0 15px #292a41;
+          box-shadow: 0px 10px 20px -7px #bec925, 5px 0 15px #292a41;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .card-title {
   padding: 0.25em;
+  font-size: 2em;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    background: #bec925;
+  }
+  100% {
+    background: #bec925;
+  }
+}
+
+@keyframes appear {
+  0% {
+    background: #bec925;
+  }
+  100% {
+    background: #bec925;
+  }
 }
 
 .card-progress .card-bar {
@@ -44,8 +74,45 @@ h1 {
   min-width: 37px;
 }
 
-.card-progress .card-active {
-  background: #bec925;
+.card-active {
+  -webkit-animation-duration: 200ms;
+          animation-duration: 200ms;
+  -webkit-animation-name: appear;
+          animation-name: appear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.card-bar-one {
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+
+.card-bar-two {
+  -webkit-animation-delay: 400ms;
+          animation-delay: 400ms;
+}
+
+.card-bar-three {
+  -webkit-animation-delay: 600ms;
+          animation-delay: 600ms;
+}
+
+.card-bar-four {
+  -webkit-animation-delay: 800ms;
+          animation-delay: 800ms;
+}
+
+.card-bar-five {
+  -webkit-animation-delay: 1000ms;
+          animation-delay: 1000ms;
+}
+
+.card-bar-six {
+  -webkit-animation-delay: 1200ms;
+          animation-delay: 1200ms;
 }
 
 .card-bottom {
