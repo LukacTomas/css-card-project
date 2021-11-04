@@ -1,7 +1,25 @@
+$colors: (
+  #cc6698,
+  #0869ad,
+  #ff8300,
+  #7a86b8,
+  #f05133,
+  #2aa9e0,
+  #71bf45,
+  #ef0e39,
+  #9e79d7
+);
+
+$color: nth($colors, random(length($colors)));
+
 $bg-dark: #292a41;
-$text-dark: #ececec;
-$shadow-dark: #bec925;
 $card-dark: #292a41;
+$text-dark: #ececec;
+
+$shadow-dark: #bec925;
+$card-theme-color-primary: #bec925;
+$card-theme-color-red: #ef0e39;
+$card-theme-color-blue: #0869ad;
 
 * {
   box-sizing: border-box;
@@ -15,16 +33,24 @@ body {
   background-color: #292a41;
   color: $text-dark;
   font-family: "Fruktur", cursive;
-  margin: 0 auto;
-  max-width: 1024px;
 }
 
 h1 {
   margin: 2em;
   padding: 1.5em;
   text-align: center;
+  max-width: 1024px;
+  margin: 0 auto;
+}
 
-  border: 1px solid red;
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 $card-padding: 1.5em;
@@ -32,30 +58,109 @@ $card-width: 350px;
 .card {
   background-color: $card-dark;
   border-radius: 1em;
-  box-shadow: 0px 10px 13px -7px $shadow-dark, 5px 0 5px $bg-dark;
+  cursor: pointer;
   font-family: "Bebas Neue", cursive;
   padding: $card-padding;
-  margin: 1em;
+  margin: 1em 3em;
   max-width: 350px;
   transition: all 200ms ease-in-out;
+  user-select: none;
+}
+
+.primary {
+  box-shadow: 0px 0px 13px -5px $card-theme-color-primary, 5px 0 5px $bg-dark;
   &:hover {
-    box-shadow: 0px 10px 20px -7px $shadow-dark, 5px 0 15px $bg-dark;
+    box-shadow: 0px 10px 20px -7px $card-theme-color-primary,
+      5px 0 15px $bg-dark;
     transform: scale(1.05);
+  }
+  .card-title {
+    text-shadow: 0 5px 10px $card-theme-color-primary;
+  }
+
+  @keyframes appear-primary {
+    0% {
+      background: $card-theme-color-primary;
+    }
+
+    100% {
+      background: $card-theme-color-primary;
+    }
+  }
+
+  .card-active {
+    animation-name: appear-primary;
+  }
+
+  .card-item:hover .card-title-item {
+    text-shadow: 0 5px 10px $card-theme-color-primary;
+  }
+}
+
+.red {
+  box-shadow: 0px 0px 13px -5px $card-theme-color-red, 5px 0 5px $bg-dark;
+  &:hover {
+    box-shadow: 0px 10px 20px -7px $card-theme-color-red, 5px 0 15px $bg-dark;
+    transform: scale(1.05);
+  }
+  .card-title {
+    text-shadow: 0 5px 10px $card-theme-color-red;
+  }
+
+  @keyframes appear-red {
+    0% {
+      background: $card-theme-color-red;
+    }
+
+    100% {
+      background: $card-theme-color-red;
+    }
+  }
+  .card-active {
+    animation-name: appear-red;
+  }
+
+  .card-item:hover .card-title-item {
+    text-shadow: 0 5px 10px $card-theme-color-red;
+  }
+}
+.blue {
+  box-shadow: 0px 0px 13px -5px $card-theme-color-blue, 5px 0 5px $bg-dark;
+  &:hover {
+    box-shadow: 0px 10px 20px -7px $card-theme-color-blue, 5px 0 15px $bg-dark;
+    transform: scale(1.05);
+  }
+  .card-title {
+    text-shadow: 0 5px 10px $card-theme-color-blue;
+  }
+
+  @keyframes appear-blue {
+    0% {
+      background: $card-theme-color-blue;
+    }
+
+    100% {
+      background: $card-theme-color-blue;
+    }
+  }
+
+  .card-active {
+    animation-name: appear-blue;
+  }
+
+  .card-item:hover .card-title-item {
+    text-shadow: 0 5px 10px $card-theme-color-blue;
   }
 }
 
 .card-title {
+  font-size: 3em;
+  text-align: center;
+}
+
+.card-title-item {
   padding: 0.25em;
   font-size: 2em;
-}
-@keyframes appear {
-  0% {
-    background: #bec925;
-  }
-
-  100% {
-    background: #bec925;
-  }
 }
 
 .card-progress {
@@ -70,10 +175,9 @@ $card-width: 350px;
 }
 .card-active {
   animation-duration: 200ms;
-  animation-name: appear;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
-  //background: #bec925 !important;
+  //animation-direction: alternate;
+  //background: $card-theme-color !important;
 }
 
 .card-bar-one {
@@ -96,39 +200,44 @@ $card-width: 350px;
 }
 
 $card-bottom-color: #161724;
-
 .card-bottom {
   background: $card-bottom-color;
-  border-radius: 0 0 #{$card-padding * 2} 0;
   min-height: #{$card-padding/2};
   margin: 0.5em auto;
   position: relative;
   top: 0;
   left: -$card-padding;
-  width: calc(#{$card-width} + #{$card-padding});
-  &::after {
-    background-color: $card-bottom-color;
-    border-radius: 0 #{$card-padding * 2} 0 0;
-    content: "";
-    display: table;
-    min-height: #{$card-padding/2};
-    min-width: $card-padding;
-    position: absolute;
-    top: -#{$card-padding/2};
-    right: 0;
-    z-index: 5;
-  }
+  width: calc(#{$card-width});
+}
 
-  &::before {
-    background-color: $bg-dark;
-    border-radius: 0 #{3 * $card-padding/4} #{3 * $card-padding/4} 0;
-    content: "";
-    display: table;
-    min-height: #{$card-padding/2};
-    min-width: #{$card-padding};
-    position: absolute;
-    top: -#{$card-padding/2};
-    right: #{$card-padding/2};
-    z-index: 10;
+@media screen and (min-width: 576px) {
+  .card-bottom {
+    border-radius: 0 0 #{$card-padding * 2} 0;
+    width: calc(#{$card-width} + #{$card-padding});
+    &::after {
+      background-color: $card-bottom-color;
+      border-radius: 0 #{$card-padding * 2} 0 0;
+      content: "";
+      display: table;
+      min-height: #{$card-padding/2};
+      min-width: $card-padding;
+      position: absolute;
+      top: -#{$card-padding/2};
+      right: 0;
+      z-index: 5;
+    }
+
+    &::before {
+      background-color: $bg-dark;
+      border-radius: 0 #{3 * $card-padding/4} #{3 * $card-padding/4} 0;
+      content: "";
+      display: table;
+      min-height: #{$card-padding/2};
+      min-width: #{$card-padding};
+      position: absolute;
+      top: -#{$card-padding/2};
+      right: #{$card-padding/2};
+      z-index: 10;
+    }
   }
 }
